@@ -124,38 +124,14 @@ for category in categories:
     category_instance = Category(category,data_path)
     # * crée un dossier dans le dossier data/<nom de la catégorie>
     category_instance.create_dir()
+    # * Récupération de la liste des produits
     category_instance.get_product_list()
+    # *Créé un fichier csv pour chaque categorie
     category_instance.create_csv_file()
-    for book in category_instance.product_list:
-        book.append_into_csv(category_instance.path_dir)
-    # * récupérer le chemin du dossier crée pour chaque catégories
-    # *récupérer l'adresse de chaque catégories
-    # *persisté le chemin et l'adresse
-    # if categorie_pages > 1:
-    #     for i in range(categorie_pages):
-    #         soup = get_page_content(url +"/"+categorie_url.replace('index.html', f'page-{i+1}.html'))
-    #         [products_info.append(( product.find('a' , href=True)['href'].split(".",6)[-1],product.find('a')['title'].strip().replace(" ","_").lower())) for product in soup.find_all('h3')]
-    # else:   
-    #         [products_info.append(( product.find('a' , href=True)['href'].split(".",6)[-1],product.find('a')['title'].strip().replace(" ","_").lower())) for product in soup.find_all('h3')]
-    # categories_info.append((categorie_path, products_info))
-
-# # *Pour chaque catégorie 
-# for category in categories_info:
-#     categorie_path,products_list = category
-        
-#         for product in products_list:
-
-#             book = Product()
-
-    # soup = bs(page.content, 'html5lib')
-    # products = soup.find_all('article',class_='product_pod')
-
-
-    
     # ? Pour chaque produit :
-    
-        # *Créé un dossier avec le nom du produit
-    
-        # *Enregistré les information extraite
+    for book in category_instance.product_list:
+        # * récupérer le chemin du dossier crée pour chaque catégories
+        # *Créé une ligne csv avec les information du produit
+        book.append_into_csv(category_instance.path_dir)
         
         # *Enregistrer l'image
