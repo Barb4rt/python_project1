@@ -1,4 +1,4 @@
-# python_project1
+# 🐍 python_project_1 🐍
 
 1. * Installer python 3.10 
 
