@@ -3,5 +3,4 @@
 data
 
 test.py
-
-main_alt.py
+__pycache__

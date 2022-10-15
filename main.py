@@ -1,7 +1,3 @@
-from calendar import c
-from hashlib import new
-from itertools import product
-from unicodedata import category
 import requests
 import os
 from bs4 import BeautifulSoup as bs
