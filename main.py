@@ -31,8 +31,10 @@ for categorie in Page.get_categories_list(uri=uri, page=Page.get_page_content(f"
     with alive_bar(len(categorie.book_list), spinner=spinner) as bar:
         for book_url in categorie.book_list:
             bar()
-            book = list(Book.book_format(Page.get_page_content(book_url), book_url))
-            ThreadHandler(2,"download",
+            book = list(Book.book_format(Page.get_page_content(book_url), book_url, categorie.name))
+            ThreadHandler(
+                2,
+                "download",
                 Download.download_image(book[2], book[-1], categorie.media_dir)
             ).start()
             bar.text = f"-> Write into CSV file {book[2]} data , please wait..."
