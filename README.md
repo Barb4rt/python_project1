@@ -2,7 +2,7 @@
 
 1. * Installer python 3.10 
 
-2. * Créé un environement virtuel a l'aide dde la commande `python -m venv .env`
+2. * Créé un environement virtuel a l'aide de la commande `python -m venv .env`
 
 3. * Activer l'environement virtuel a l'aide de la commande `.\venv\Scripts\activate`
 
