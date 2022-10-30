@@ -5,10 +5,12 @@ from alive_progress.animations import bouncing_spinner_factory
 from modules import *
 
 start_time = time.time()
-base_path = os.getcwd() + "\\" if "\\" in os.getcwd() else "/"
-data_dir = Helper.create_directory("data", base_path)
+base_path=os.getcwd() + "\\" if "\\" in os.getcwd() else "/"
+data_dir = Helper.create_directory('data',base_path)
 uri = "http://books.toscrape.com"
-spinner = bouncing_spinner_factory("🖊️", 8, hide=False, background=".", overlay=False)
+spinner = bouncing_spinner_factory(
+    "🖊️", 8, hide=False, background=".", overlay=False
+)
 headers = [
     "url",
     "upc",
@@ -21,9 +23,7 @@ headers = [
     "note",
     "chemin de l'image",
 ]
-for categorie in Page.get_categories_list(
-    uri=uri, page=Page.get_page_content(f"{uri}/index.html")
-):
+for categorie in Page.get_categories_list(uri=uri, page=Page.get_page_content(f"{uri}/index.html")):
     categorie = Category(*categorie)
     categorie.create_categorie_dir(data_dir)
     csv = Csv(categorie.name, categorie.folder_path, headers=headers)
@@ -35,7 +35,7 @@ for categorie in Page.get_categories_list(
             ThreadHandler(
                 2,
                 "download",
-                Download.download_image(book[2], book[-1], categorie.media_dir),
+                Download.download_image(book[2], book[-1], categorie.media_dir)
             ).start()
             bar.text = f"-> Write into CSV file {book[2]} data , please wait..."
             csv.append_into_csv(book)
