@@ -4,7 +4,7 @@
 
 class Book:
     @staticmethod
-    def book_format(page, url):
+    def book_format(page, url, category_name):
         """Format the data from the page to the format desired in CSV file
 
         Args:
@@ -28,11 +28,13 @@ class Book:
         ].next_sibling.next_sibling.string if page(
             "div", id="product_description"
         ) else "No description"
+        yield category_name
         note = (
             page.find("div", class_="product_main")
             .find("p", class_="star-rating")["class"][-1]
             .lower()
         )
         note = MAP_INTEGER[note]
+        
         yield str(note) + "/5"
         yield "http://books.toscrape.com" + page.find("img")["src"].split(".", 4)[-1]
